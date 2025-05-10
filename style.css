@@ -1,0 +1,719 @@
+:root {
+    --primary-color: #2980B9; /* Changed from Teal to Blue (from hero gradient) */
+    --secondary-color: #6f42c1; /* Complementary Purple/Indigo */
+    --accent-color: #fd7e14; /* Bright Orange for accents if needed */
+    --light-color: #f8f9fa; /* Keep for light backgrounds */
+    --dark-color: #212529; /* Slightly softer dark */
+    --text-color: #343a40; /* Main text color */
+    --light-text-color: #f8f9fa;
+    --background-blur: 10px;
+    --border-radius: 15px;
+    --card-padding: 25px; /* Slightly increased padding */
+    --shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.25); /* Softer shadow */
+    --font-family: 'Poppins', sans-serif;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: var(--font-family);
+    line-height: 1.6;
+    background-color: var(--light-color); /* Light background for overall page */
+    color: var(--text-color); /* Updated default text color */
+    overflow-x: hidden; /* Prevent horizontal scroll */
+}
+
+/* Glassmorphism Base for Cards/Sections */
+.glass-effect {
+    background: rgba(255, 255, 255, 0.65); /* Adjusted alpha for new palette */
+    backdrop-filter: blur(var(--background-blur));
+    -webkit-backdrop-filter: blur(var(--background-blur));
+    border-radius: var(--border-radius);
+    border: 1px solid rgba(255, 255, 255, 0.20); /* Adjusted border */
+    box-shadow: var(--shadow);
+}
+
+h1, h2, h3 {
+    margin-bottom: 1rem;
+    font-weight: 600;
+}
+
+h1 { font-size: 2.8rem; color: var(--dark-color); } /* Ensure headings use appropriate colors */
+h2 { font-size: 2.2rem; text-align: center; margin-bottom: 2.5rem; color: var(--primary-color); }
+h3 { font-size: 1.5rem; color: var(--primary-color); } /* Changed from secondary-color to primary-color (blue) */
+
+p {
+    margin-bottom: 1rem;
+    color: var(--text-color); /* Ensure paragraphs use main text color */
+}
+
+a {
+    text-decoration: none;
+    color: var(--primary-color);
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
+.container {
+    max-width: 1100px;
+    margin: auto;
+    padding: 0 20px;
+}
+
+/* Header & Navigation */
+header {
+    background: rgba(255, 255, 255, 0.7);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    padding: 1rem 0;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 2rem;
+}
+
+.logo img {
+    width: 180px; /* Increased logo width */
+    height: auto; /* Maintain aspect ratio */
+}
+
+.nav-links {
+    list-style: none;
+    display: flex;
+}
+
+.nav-links li {
+    margin-left: 25px;
+}
+
+.nav-links a {
+    color: var(--text-color); /* Updated nav link color */
+    font-weight: 500;
+    transition: color 0.3s ease;
+    padding: 5px 10px;
+    border-radius: 5px;
+}
+
+.nav-links a:hover, .nav-links a.active {
+    color: var(--primary-color);
+    background-color: rgba(41, 128, 185, 0.1); /* Updated to blue based on new --primary-color #2980B9 */
+}
+
+.burger {
+    display: none;
+    cursor: pointer;
+}
+
+.burger div {
+    width: 25px;
+    height: 3px;
+    background-color: var(--dark-color);
+    margin: 5px;
+    transition: all 0.3s ease;
+}
+
+/* Main Content Area */
+main {
+    padding-top: 90px; /* Adjusted padding for potentially taller fixed header */
+}
+
+section {
+    padding: 70px 20px; /* Increased padding for better separation */
+    border-bottom: 1px solid #e0e0e0; /* Subtle border for separation */
+}
+
+section:last-of-type {
+    border-bottom: none; /* No border for the last section */
+}
+
+/* Hero Section */
+#hero {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    min-height: calc(100vh - 90px); /* Full viewport height minus header, adjust if header height changes significantly */
+    /* New Professional Gradient Background */
+    background: linear-gradient(135deg, #1F618D 0%, #2980B9 100%); /* Professional Blue Gradient */
+    padding: 40px 5%;
+    color: var(--light-text-color); /* Text on hero should be light */
+    border-bottom: none; /* Hero section usually doesn't need a bottom border like others */
+}
+
+.hero-content {
+    flex: 1;
+    max-width: 600px;
+    margin-right: 20px;
+    animation: slideInFromLeft 1s ease-out;
+}
+
+.hero-content h1 {
+    font-size: 3.2rem;
+    color: var(--light-text-color); /* Light text for hero heading */
+    line-height: 1.2;
+}
+
+.hero-content .subtitle {
+    font-size: 1.2rem;
+    color: rgba(248, 249, 250, 0.9); /* Slightly transparent light text */
+    margin: 20px 0 30px;
+}
+
+.hero-buttons .cta-button {
+    background-color: var(--accent-color); /* Using accent for primary CTA */
+    color: white;
+    padding: 12px 25px;
+    border-radius: 25px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-right: 15px;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    display: inline-block;
+    border: 2px solid transparent;
+}
+
+.hero-buttons .cta-button:hover {
+    background-color: #e66a00; /* Darker accent */
+    transform: translateY(-3px);
+}
+
+.hero-buttons .cta-button.secondary {
+    background-color: transparent;
+    color: var(--light-text-color); /* Light text for secondary CTA */
+    border: 2px solid var(--light-text-color); /* Light border */
+}
+
+.hero-buttons .cta-button.secondary:hover {
+    background-color: var(--light-text-color);
+    color: var(--primary-color); /* Primary color text on hover - will be blue */
+}
+
+.hero-image {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    animation: slideInFromRight 1s ease-out;
+}
+
+.hero-image img {
+    max-width: 100%;
+    max-height: 70vh;
+    object-fit: contain;
+    border-radius: var(--border-radius);
+    /* Optional: if the hero image itself needs a glass effect */
+    /* background: rgba(255, 255, 255, 0.2); 
+    backdrop-filter: blur(5px);
+    padding: 10px; */
+}
+
+@keyframes slideInFromLeft {
+    0% { transform: translateX(-100%); opacity: 0; }
+    100% { transform: translateX(0); opacity: 1; }
+}
+
+@keyframes slideInFromRight {
+    0% { transform: translateX(100%); opacity: 0; }
+    100% { transform: translateX(0); opacity: 1; }
+}
+
+/* Services Section */
+#services {
+    background-color: var(--light-color); /* Ensuring a light base */
+}
+
+.services-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+    margin-top: 20px;
+}
+
+.service-card {
+    padding: var(--card-padding);
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    /* Applying glass effect to cards */
+    background: rgba(255, 255, 255, 0.65);
+    backdrop-filter: blur(var(--background-blur));
+    -webkit-backdrop-filter: blur(var(--background-blur));
+    border-radius: var(--border-radius);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.service-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 12px 40px rgba(0,0,0,0.15);
+}
+
+.service-card img {
+    width: 100%;
+    height: 200px; /* Fixed height for consistency */
+    object-fit: cover;
+    border-radius: calc(var(--border-radius) - 5px); /* Inner radius */
+    margin-bottom: 15px;
+}
+
+.service-card h3 {
+    color: var(--primary-color); /* Changed to primary-color (blue) */
+    margin-bottom: 10px;
+}
+
+/* About Us Section */
+#about {
+    background-color: #eef2f7; /* Alternating background */
+}
+.about-container {
+    display: flex;
+    align-items: center;
+    gap: 40px;
+    padding: 40px;
+    background: rgba(255, 255, 255, 0.7); /* Keep light glass for contrast */
+    backdrop-filter: blur(var(--background-blur));
+    -webkit-backdrop-filter: blur(var(--background-blur));
+    border-radius: var(--border-radius);
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    box-shadow: var(--shadow);
+}
+
+.about-image {
+    flex: 1;
+    max-width: 400px;
+}
+
+.about-image img {
+    border-radius: var(--border-radius);
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+}
+
+.about-text {
+    flex: 2;
+}
+
+.about-text h2 {
+    text-align: left;
+    margin-bottom: 1.5rem;
+    color: var(--primary-color); /* Primary color for this heading */
+}
+
+
+/* Testimonials Section */
+#testimonials {
+    background-color: var(--light-color); /* Alternating background */
+    position: relative; /* For positioning slider buttons */
+}
+
+.testimonial-slider {
+    position: relative;
+    max-width: 800px;
+    margin: 0 auto;
+    overflow: hidden;
+    padding: 20px;
+    background: rgba(255, 255, 255, 0.75); /* Slightly more opaque for readability */
+    backdrop-filter: blur(calc(var(--background-blur) - 2px));
+    -webkit-backdrop-filter: blur(calc(var(--background-blur) - 2px));
+    border-radius: var(--border-radius);
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+}
+
+.testimonial-item {
+    display: none; /* Hidden by default */
+    padding: 20px;
+    text-align: center;
+    animation: fadeIn 0.5s ease-in-out;
+}
+
+.testimonial-item.active {
+    display: block; /* Show active testimonial */
+}
+
+.testimonial-item p {
+    font-style: italic;
+    font-size: 1.1rem;
+    color: var(--text-color); /* Main text color */
+    margin-bottom: 15px;
+}
+
+.testimonial-item h4 {
+    font-weight: 600;
+    color: var(--primary-color); /* Primary color for emphasis */
+}
+
+.slider-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: var(--secondary-color); /* Secondary color for slider buttons */
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 1.2rem;
+    transition: background-color 0.3s ease;
+    z-index: 10;
+}
+
+.slider-btn:hover {
+    background-color: #5a32a3; /* Darker secondary */
+}
+
+.slider-btn.prev {
+    left: -15px; /* Adjust if slider has padding */
+}
+
+.slider-btn.next {
+    right: -15px; /* Adjust if slider has padding */
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+/* Contact Section */
+#contact {
+    background-color: #eef2f7; /* Alternating background for contact page */
+}
+
+.contact-container {
+    display: flex;
+    gap: 40px;
+    align-items: flex-start; /* Align items to the top */
+}
+
+.contact-form {
+    flex: 2;
+    padding: 30px;
+    background: rgba(255, 255, 255, 0.7); /* Light glass for form */
+    backdrop-filter: blur(var(--background-blur));
+    -webkit-backdrop-filter: blur(var(--background-blur));
+    border-radius: var(--border-radius);
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    box-shadow: var(--shadow);
+}
+.contact-form p {
+    margin-bottom: 15px;
+}
+#google-form-placeholder {
+    background: rgba(255,255,255,0.3);
+    border-radius: 10px;
+}
+.contact-form iframe {
+    border-radius: 10px;
+    min-height: 450px; /* Ensure iframe is tall enough */
+}
+
+.contact-details {
+    flex: 1;
+    padding: 30px;
+    background: rgba(255, 255, 255, 0.7); /* Light glass for details */
+    backdrop-filter: blur(var(--background-blur));
+    -webkit-backdrop-filter: blur(var(--background-blur));
+    border-radius: var(--border-radius);
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    box-shadow: var(--shadow);
+}
+
+.contact-details h3 {
+    color: var(--primary-color); /* Primary color for this heading */
+    margin-bottom: 15px;
+}
+.contact-details p {
+    margin-bottom: 10px;
+    line-height: 1.8;
+}
+.contact-details a {
+    color: var(--primary-color); /* Changed to primary-color (blue) */
+    font-weight: 500;
+}
+.contact-details a:hover {
+    text-decoration: underline;
+}
+
+
+/* Footer */
+footer {
+    background-color: var(--dark-color);
+    color: var(--light-text-color); /* Light text for footer */
+    text-align: center;
+    padding: 30px 20px;
+    margin-top: 40px; /* Space before footer */
+}
+
+.footer-nav {
+    list-style: none;
+    padding: 0;
+    margin-bottom: 15px;
+}
+
+.footer-nav li {
+    display: inline-block;
+    margin: 0 15px;
+}
+
+.footer-nav a {
+    color: var(--light-text-color);
+    opacity: 0.8;
+    transition: opacity 0.3s ease;
+}
+
+.footer-nav a:hover {
+    opacity: 1;
+    text-decoration: underline;
+}
+
+footer p {
+    font-size: 0.9rem;
+    color: rgba(248, 249, 250, 0.75); /* Adjusted opacity for light text */
+    margin-bottom: 0;
+}
+
+/* Responsive Design */
+@media (max-width: 992px) {
+    .hero-content h1 { font-size: 2.8rem; }
+    .about-container { flex-direction: column; }
+    .about-image { max-width: 100%; margin-bottom: 20px; }
+}
+
+@media (max-width: 768px) {
+    .nav-links {
+        position: absolute;
+        right: 0;
+        top: 80px; /* Adjusted for potentially taller header */
+        background-color: rgba(255, 255, 255, 0.95);
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 60%;
+        transform: translateX(100%);
+        transition: transform 0.5s ease-in;
+        border-left: 1px solid rgba(0,0,0,0.1);
+        border-bottom: 1px solid rgba(0,0,0,0.1);
+        border-bottom-left-radius: 10px;
+        padding: 20px 0;
+        box-shadow: -5px 5px 15px rgba(0,0,0,0.1);
+    }
+
+    .nav-links.nav-active {
+        transform: translateX(0%);
+    }
+
+    .nav-links li {
+        margin: 15px 0;
+        opacity: 0; /* For animation */
+    }
+
+    .nav-links li a {
+        color: var(--text-color); /* Ensure mobile nav links use text color */
+        font-size: 1.1rem;
+    }
+    .nav-links li a:hover, .nav-links li a.active {
+        color: var(--primary-color);
+        background-color: transparent;
+    }
+
+    .burger {
+        display: block;
+    }
+
+    #hero {
+        flex-direction: column;
+        text-align: center;
+        padding-top: 40px; /* Add more padding if needed */
+    }
+    .hero-content {
+        margin-right: 0;
+        margin-bottom: 30px;
+        max-width: 100%;
+    }
+    .hero-content h1 { font-size: 2.5rem; }
+    .hero-image img { max-height: 50vh; }
+
+    .contact-container {
+        flex-direction: column;
+    }
+    .contact-form, .contact-details {
+        width: 100%;
+    }
+
+    .slider-btn.prev { left: 5px; }
+    .slider-btn.next { right: 5px; }
+}
+
+@media (max-width: 576px) {
+    h1 { font-size: 2.2rem; }
+    h2 { font-size: 1.8rem; }
+    .hero-content h1 { font-size: 2rem; }
+    .hero-content .subtitle { font-size: 1rem; }
+    .hero-buttons .cta-button {
+        padding: 10px 20px;
+        font-size: 0.9rem;
+        width: calc(50% - 10px); /* Two buttons side by side */
+        margin-bottom: 10px;
+    }
+    .hero-buttons .cta-button:last-child { margin-right: 0;}
+
+    .services-container {
+        grid-template-columns: 1fr; /* Stack cards on very small screens */
+    }
+    .service-card img { height: 180px; }
+}
+
+/* Animation for nav links appearing */
+.nav-links.nav-active li {
+    opacity: 1;
+    transition: opacity 0.5s ease forwards;
+}
+
+.nav-links.nav-active li:nth-child(1) { transition-delay: 0.2s; }
+.nav-links.nav-active li:nth-child(2) { transition-delay: 0.3s; }
+.nav-links.nav-active li:nth-child(3) { transition-delay: 0.4s; }
+
+
+/* Toggle burger icon */
+.toggle .line1 {
+    transform: rotate(-45deg) translate(-5px, 6px);
+}
+.toggle .line2 {
+    opacity: 0;
+}
+.toggle .line3 {
+    transform: rotate(45deg) translate(-5px, -6px);
+}
+
+/* Accessibility: Focus visible for keyboard navigation */
+a:focus-visible, button:focus-visible {
+    outline: 2px solid var(--accent-color); /* Use accent color for focus outline */
+    outline-offset: 2px;
+}
+
+.nav-extra-links {
+    display: flex;
+    align-items: center;
+}
+
+.social-links a {
+    color: var(--primary-color);
+    text-decoration: none;
+    margin: 0 10px;
+    font-size: 24px;
+    transition: color 0.3s ease;
+}
+
+.social-links a:hover {
+    color: var(--primary-color-dark);
+}
+
+.footer-social-links a {
+    font-size: 28px;
+}
+
+.services-enquiry-button .cta-button {
+    background-color: var(--secondary-color); /* Using secondary color for this button */
+    color: white;
+    padding: 12px 30px; /* Slightly different padding */
+    border-radius: 25px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    display: inline-block;
+    border: 2px solid transparent;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+}
+
+.services-enquiry-button .cta-button:hover {
+    background-color: #5a32a3; /* Darker secondary */
+    transform: translateY(-3px);
+    box-shadow: 0 6px 20px rgba(0,0,0,0.15);
+}
+
+/* Why Choose Us Section */
+#why-choose-us {
+    background-color: #eef2f7; /* Light background similar to services */
+}
+
+.why-choose-us-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 30px;
+    margin-top: 20px;
+}
+
+.choose-us-card {
+    /* Glass effect for cards */
+    background: rgba(255, 255, 255, 0.7);
+    backdrop-filter: blur(var(--background-blur));
+    -webkit-backdrop-filter: blur(var(--background-blur));
+    border-radius: var(--border-radius);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+    padding: var(--card-padding);
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.choose-us-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.12);
+}
+
+.choose-us-card .icon {
+    font-size: 2.5rem; /* Placeholder for icon styling */
+    color: var(--primary-color);
+    margin-bottom: 15px;
+    line-height: 1; /* Ensure icons align well if they have ascenders/descenders */
+}
+
+.choose-us-card h3 {
+    color: var(--primary-color); /* Changed to primary-color (blue) */
+    margin-bottom: 10px;
+    font-size: 1.3rem;
+}
+
+footer .social-links a {
+    color: var(--light-text-color);
+    opacity: 0.8;
+}
+
+footer .social-links a:hover {
+    opacity: 1;
+    color: var(--light-text-color); /* Keep light on dark background */
+}
+
+.cta-button.secondary {
+    background-color: var(--primary-color);
+    color: white;
+}
+
+.cta-button.secondary:hover {
+    background-color: var(--primary-color-dark);
+} 
